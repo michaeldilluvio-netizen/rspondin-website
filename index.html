@@ -94,6 +94,73 @@
             background: #2eb8b8;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--color-dark);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-white);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-light-gray);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-nav .nav-cta {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -397,6 +464,72 @@
             color: white;
             font-size: 0.875rem;
             flex-shrink: 0;
+        }
+
+        /* Norwood Scale Visual */
+        .norwood-guide {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--color-light-gray);
+            border-radius: 12px;
+        }
+
+        .norwood-guide h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        .norwood-stages {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .norwood-stage {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 0.25rem;
+            background: var(--color-white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .norwood-stage:hover {
+            border-color: var(--color-accent);
+        }
+
+        .norwood-stage.selected {
+            border-color: var(--color-accent);
+            background: rgba(54, 204, 204, 0.1);
+        }
+
+        .norwood-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .norwood-stage span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--color-gray);
+        }
+
+        .norwood-stage strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-dark);
+        }
+
+        @media (max-width: 576px) {
+            .norwood-stages {
+                flex-wrap: wrap;
+            }
+            .norwood-stage {
+                flex: 0 0 calc(25% - 0.5rem);
+            }
         }
 
         /* Timeline Section */
@@ -720,6 +853,10 @@
                 display: none;
             }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -765,7 +902,21 @@
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#enroll" class="nav-cta">Join Trial</a></li>
         </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#benefits" onclick="closeMobileMenu()">Benefits</a>
+        <a href="#eligibility" onclick="closeMobileMenu()">Eligibility</a>
+        <a href="#timeline" onclick="closeMobileMenu()">Timeline</a>
+        <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#enroll" class="nav-cta" onclick="closeMobileMenu()">Join Trial</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -893,6 +1044,33 @@
 
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Check My Eligibility →</button>
                     </form>
+
+                    <!-- Norwood Scale Visual Guide -->
+                    <div class="norwood-guide">
+                        <h4>Not sure of your stage? Use this guide:</h4>
+                        <div class="norwood-stages">
+                            <div class="norwood-stage" data-stage="1" onclick="selectNorwood('1')">
+                                <div class="norwood-icon">👤</div>
+                                <strong>1-2</strong>
+                                <span>Minimal</span>
+                            </div>
+                            <div class="norwood-stage" data-stage="2-3" onclick="selectNorwood('2-3')">
+                                <div class="norwood-icon">👤</div>
+                                <strong>2-3</strong>
+                                <span>Temples</span>
+                            </div>
+                            <div class="norwood-stage" data-stage="4-5" onclick="selectNorwood('4-5')">
+                                <div class="norwood-icon">👤</div>
+                                <strong>4-5</strong>
+                                <span>Crown</span>
+                            </div>
+                            <div class="norwood-stage" data-stage="6+" onclick="selectNorwood('6+')">
+                                <div class="norwood-icon">👤</div>
+                                <strong>6+</strong>
+                                <span>Advanced</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -991,7 +1169,7 @@
                 </div>
                 <div class="faq-item">
                     <h4>Where is the trial located?</h4>
-                    <p>We have multiple trial sites. Location details will be provided after initial screening confirms eligibility.</p>
+                    <p>Trial site locations are <strong>To Be Announced</strong>. Enter your email to be notified when sites are confirmed in your area.</p>
                 </div>
                 <div class="faq-item">
                     <h4>What happens after the trial?</h4>
@@ -1031,8 +1209,8 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="#">Research Ethics</a></li>
                     </ul>
                 </div>
@@ -1060,7 +1238,89 @@
         <a href="#eligibility" class="btn btn-primary">Join Trial →</a>
     </div>
 
+    <!-- Supabase Client (ready for when you have credentials) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+        // ===========================================
+        // CONFIGURATION - Update when Supabase is ready
+        // ===========================================
+        const SUPABASE_URL = ''; // e.g., 'https://xxxxx.supabase.co'
+        const SUPABASE_ANON_KEY = ''; // e.g., 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+        const USE_SUPABASE = SUPABASE_URL && SUPABASE_ANON_KEY;
+
+        // Initialize Supabase client if configured
+        let supabase = null;
+        if (USE_SUPABASE) {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
+
+        // ===========================================
+        // LOCAL STORAGE FALLBACK (used until Supabase is configured)
+        // ===========================================
+        function saveLeadLocally(lead) {
+            const leads = JSON.parse(localStorage.getItem('rspondin_leads') || '[]');
+            leads.push({ ...lead, id: Date.now(), created_at: new Date().toISOString() });
+            localStorage.setItem('rspondin_leads', JSON.stringify(leads));
+            console.log('Lead saved locally:', lead);
+            return true;
+        }
+
+        async function saveLead(email, ageRange, norwoodStage, eligible) {
+            const lead = { email, age_range: ageRange, norwood_stage: norwoodStage, eligible };
+
+            if (USE_SUPABASE) {
+                const { data, error } = await supabase
+                    .from('trial_leads')
+                    .insert([lead]);
+                if (error) throw error;
+                return data;
+            } else {
+                // Fallback to localStorage
+                return saveLeadLocally(lead);
+            }
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Norwood scale selection
+        function selectNorwood(stage) {
+            // Update dropdown
+            document.getElementById('hairloss').value = stage;
+
+            // Update visual selection
+            document.querySelectorAll('.norwood-stage').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.querySelector(`.norwood-stage[data-stage="${stage}"]`).classList.add('selected');
+        }
+
+        // Sync dropdown with visual guide
+        document.getElementById('hairloss').addEventListener('change', function() {
+            const stage = this.value;
+            document.querySelectorAll('.norwood-stage').forEach(el => {
+                el.classList.remove('selected');
+            });
+            if (stage) {
+                const stageEl = document.querySelector(`.norwood-stage[data-stage="${stage}"]`);
+                if (stageEl) stageEl.classList.add('selected');
+            }
+        });
+
         // Show sticky CTA after scrolling past hero
         const stickyCta = document.getElementById('stickyCta');
         const hero = document.querySelector('.hero');
@@ -1075,12 +1335,14 @@
         });
 
         // Form submission handling
-        document.getElementById('eligibility-form').addEventListener('submit', function(e) {
+        document.getElementById('eligibility-form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const age = document.getElementById('age').value;
             const hairloss = document.getElementById('hairloss').value;
             const email = document.getElementById('email').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
 
             // Basic eligibility check
             let eligible = true;
@@ -1094,10 +1356,29 @@
                 message = 'This trial focuses on mild to moderate hair loss (Norwood 2-5). We may have future trials for advanced hair loss.';
             }
 
-            if (eligible) {
-                alert('Great news! You may be eligible for the R-Spondin trial. We will contact you at ' + email + ' with next steps.');
-            } else {
-                alert(message + '\n\nEnter your email to be notified of future trials.');
+            // Submit lead data
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                await saveLead(email, age, hairloss, eligible);
+
+                if (eligible) {
+                    alert('Great news! You may be eligible for the R-Spondin trial. We will contact you at ' + email + ' with next steps.');
+                    this.reset();
+                    document.querySelectorAll('.norwood-stage').forEach(el => el.classList.remove('selected'));
+                } else {
+                    alert(message + '\n\nWe\'ve saved your email to notify you of future trials.');
+                }
+
+                // Show storage mode in console
+                console.log(USE_SUPABASE ? '✓ Saved to Supabase' : '✓ Saved to localStorage (Supabase not configured)');
+            } catch (error) {
+                alert('There was an error submitting your information. Please try again.');
+                console.error('Submission error:', error);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     </script>
