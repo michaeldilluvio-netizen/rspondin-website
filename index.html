@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSPO | R-Spondin Research for Hair Regeneration | HairDAO</title>
+    <meta name="description" content="Advancing R-Spondin and Wnt signaling research for hair loss treatment. A HairDAO initiative.">
+
+    <!-- Sofia Pro Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-light-blue: #daf1f5;
+            --color-accent: #36CCCC;
+            --color-dark: #252525;
+            --color-white: #ffffff;
+            --color-gray: #6b7280;
+            --color-light-gray: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Sofia Sans', sans-serif;
+            color: var(--color-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--color-white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .teal {
+            color: var(--color-accent);
+        }
+
+        .logo .dark {
+            color: var(--color-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-white) 100%);
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--color-gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: #2eb8b8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border: 2px solid var(--color-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-dark);
+            color: var(--color-white);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .molecule-graphic {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #2eb8b8 100%);
+            border-radius: 50%;
+            position: relative;
+            opacity: 0.9;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .molecule-graphic::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: var(--color-light-blue);
+            border-radius: 50%;
+        }
+
+        .molecule-graphic::after {
+            content: 'RSPO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Science Section */
+        .science {
+            background: var(--color-white);
+        }
+
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .science-card {
+            background: var(--color-light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .science-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(54, 204, 204, 0.15);
+        }
+
+        .science-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .science-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .science-card p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Pathway Diagram */
+        .pathway-section {
+            margin-top: 4rem;
+            background: var(--color-light-blue);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .pathway-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .pathway-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .pathway-step {
+            background: var(--color-white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            min-width: 150px;
+        }
+
+        .pathway-arrow {
+            color: var(--color-accent);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Research Section */
+        .research {
+            background: var(--color-light-gray);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--color-white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .research-card-header {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 1.5rem;
+        }
+
+        .research-card-header h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-tag {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .research-card-body {
+            padding: 1.5rem;
+        }
+
+        .research-card-body p {
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+        }
+
+        .research-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .research-link:hover {
+            text-decoration: underline;
+        }
+
+        .research-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 3rem;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: var(--color-gray);
+            font-weight: 500;
+        }
+
+        /* Therapeutics Section */
+        .therapeutics {
+            background: var(--color-white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--color-light-blue);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: var(--color-light-gray);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+            left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Community Section */
+        .community {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a1a 100%);
+            color: var(--color-white);
+        }
+
+        .community .section-header h2 {
+            color: var(--color-white);
+        }
+
+        .community .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .community-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .community-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .community-text p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .community-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .community-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .discord-card {
+            background: #5865F2;
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .discord-logo {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discord-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .discord-card p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+        }
+
+        .btn-discord {
+            background: var(--color-white);
+            color: #5865F2;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .btn-discord:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-brand .logo .dark {
+            color: var(--color-white);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        .hairdao-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.875rem;
+        }
+
+        .hairdao-badge span {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .molecule-graphic {
+                width: 250px;
+                height: 250px;
+            }
+
+            .science-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .community-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 2rem;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-item .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 1rem;
+                margin-right: 0;
+            }
+
+            .timeline-item .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: -10px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .pathway-diagram {
+                flex-direction: column;
+            }
+
+            .pathway-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo"><span class="teal">RSPO</span><span class="dark">NDIN</span></a>
+        <ul class="nav-links">
+            <li><a href="#science">Science</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#therapeutics">Therapeutics</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Unlocking Hair Regeneration Through <span>R-Spondin</span> Science</h1>
+                <p>Pioneering research into Wnt signaling pathways and R-Spondin proteins to develop next-generation hair loss treatments. A HairDAO initiative.</p>
+                <div class="hero-buttons">
+                    <a href="#research" class="btn btn-primary">Explore Research</a>
+                    <a href="#community" class="btn btn-secondary">Join Community</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="molecule-graphic"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Section -->
+    <section id="science" class="science">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>The Science of R-Spondin</h2>
+                <p>Understanding how R-Spondin proteins amplify Wnt signaling to promote hair follicle regeneration and growth</p>
+            </div>
+
+            <div class="science-grid">
+                <div class="science-card">
+                    <div class="science-icon">🧬</div>
+                    <h3>R-Spondin Proteins</h3>
+                    <p>R-Spondins (RSPO1-4) are secreted proteins that potentiate Wnt signaling by binding to LGR receptors. They prevent the degradation of Wnt receptors, amplifying the signaling cascade essential for hair follicle stem cell activation.</p>
+                </div>
+                <div class="science-card">
+                    <div class="science-icon">🔄</div>
+                    <h3>Wnt/β-Catenin Pathway</h3>
+                    <p>The canonical Wnt pathway is critical for hair follicle development and cycling. When activated, β-catenin accumulates and translocates to the nucleus, triggering genes responsible for hair growth and regeneration.</p>
+                </div>
+                <div class="science-card">
+                    <div class="science-icon">🌱</div>
+                    <h3>Hair Follicle Stem Cells</h3>
+                    <p>Hair follicle stem cells reside in the bulge region and are activated during the anagen (growth) phase. R-Spondin enhances Wnt signals that awaken these dormant stem cells, promoting new hair cycle initiation.</p>
+                </div>
+            </div>
+
+            <div class="pathway-section">
+                <h3 class="pathway-title">Wnt Signaling Pathway Enhanced by R-Spondin</h3>
+                <div class="pathway-diagram">
+                    <div class="pathway-step">R-Spondin<br><small>Binds LGR4/5/6</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">ZNRF3/RNF43<br><small>Inhibited</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Frizzled/LRP<br><small>Stabilized</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Wnt Signal<br><small>Amplified</small></div>
+                    <span class="pathway-arrow">→</span>
+                    <div class="pathway-step">Hair Growth<br><small>Activated</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Research Repository</h2>
+                <p>Access our curated collection of R-Spondin and Wnt signaling research relevant to hair regeneration</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-card-header">
+                        <span class="research-tag">Foundational</span>
+                        <h3>R-Spondin Functions as a Wnt Potentiator</h3>
+                    </div>
+                    <div class="research-card-body">
+                        <p>Seminal research establishing R-Spondin's role in enhancing Wnt signaling through LGR receptor binding and ZNRF3/RNF43 inhibition.</p>
+                        <a href="#" class="research-link">View Research →</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-card-header">
+                        <span class="research-tag">Hair Biology</span>
+                        <h3>Wnt Signaling in Hair Follicle Development</h3>
+                    </div>
+                    <div class="research-card-body">
+                        <p>Comprehensive review of Wnt pathway's critical role in hair follicle morphogenesis, cycling, and regeneration mechanisms.</p>
+                        <a href="#" class="research-link">View Research →</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-card-header">
+                        <span class="research-tag">Therapeutic</span>
+                        <h3>RSPO2 Promotes Hair Follicle Regeneration</h3>
+                    </div>
+                    <div class="research-card-body">
+                        <p>Preclinical studies demonstrating RSPO2's ability to reactivate dormant hair follicles and extend anagen phase duration.</p>
+                        <a href="#" class="research-link">View Research →</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <div class="research-card-header">
+                        <span class="research-tag">Clinical</span>
+                        <h3>LGR5+ Stem Cells in Human Scalp</h3>
+                    </div>
+                    <div class="research-card-body">
+                        <p>Identification and characterization of LGR5-expressing stem cells in human hair follicles as therapeutic targets.</p>
+                        <a href="#" class="research-link">View Research →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="research-stats">
+                <div class="stat-item">
+                    <h4>150+</h4>
+                    <p>Research Papers</p>
+                </div>
+                <div class="stat-item">
+                    <h4>12</h4>
+                    <p>Active Studies</p>
+                </div>
+                <div class="stat-item">
+                    <h4>4</h4>
+                    <p>RSPO Variants</p>
+                </div>
+                <div class="stat-item">
+                    <h4>$2M+</h4>
+                    <p>Research Funded</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Therapeutics Section -->
+    <section id="therapeutics" class="therapeutics">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Future Therapeutics</h2>
+                <p>Our roadmap for developing R-Spondin-based treatments for hair loss</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3>Phase 1</h3>
+                        <h4>Target Validation</h4>
+                        <p>Confirming R-Spondin/Wnt pathway components as viable therapeutic targets through comprehensive preclinical studies and molecular analysis.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3>Phase 2</h3>
+                        <h4>Drug Discovery</h4>
+                        <p>Developing small molecules and biologics that can safely modulate R-Spondin signaling in hair follicle stem cells.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3>Phase 3</h3>
+                        <h4>Preclinical Development</h4>
+                        <p>Rigorous testing of lead compounds in validated hair loss models, optimizing delivery methods and safety profiles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <h3>Phase 4</h3>
+                        <h4>Clinical Trials</h4>
+                        <p>Human clinical trials to evaluate safety, efficacy, and optimal dosing of R-Spondin pathway modulators for hair regeneration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Join Our Community</h2>
+                <p>Connect with researchers, contributors, and advocates advancing hair loss science</p>
+            </div>
+
+            <div class="community-content">
+                <div class="community-text">
+                    <h3>Be Part of the Research Revolution</h3>
+                    <p>HairDAO is building a decentralized community dedicated to accelerating hair loss research. Join us to contribute, learn, and help shape the future of hair regeneration science.</p>
+
+                    <ul class="community-features">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            Access exclusive research updates and data
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            Participate in governance and funding decisions
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            Connect with leading hair biology researchers
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            Contribute to open-source research initiatives
+                        </li>
+                    </ul>
+
+                    <a href="https://hairdao.xyz" class="btn btn-primary" target="_blank">Visit HairDAO</a>
+                </div>
+
+                <div class="discord-card">
+                    <div class="discord-logo">💬</div>
+                    <h3>Join Our Discord</h3>
+                    <p>Connect with 5,000+ community members discussing the latest in hair regeneration research and R-Spondin science.</p>
+                    <a href="https://discord.gg/hairdao" class="btn-discord" target="_blank">Join Discord Server</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><span class="teal">RSPO</span><span class="dark">NDIN</span></a>
+                    <p>Advancing R-Spondin research for hair regeneration. An open science initiative by HairDAO.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Research</h4>
+                    <ul>
+                        <li><a href="#science">Science</a></li>
+                        <li><a href="#research">Repository</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Data Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://discord.gg/hairdao" target="_blank">Discord</a></li>
+                        <li><a href="https://twitter.com/haaboratory" target="_blank">Twitter</a></li>
+                        <li><a href="https://hairdao.xyz" target="_blank">HairDAO</a></li>
+                        <li><a href="#">Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RSPO Research. Open source under MIT License.</p>
+                <div class="hairdao-badge">
+                    A <span>HairDAO</span> Initiative
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
