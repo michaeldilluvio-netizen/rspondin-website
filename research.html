@@ -472,6 +472,42 @@
             margin: 0.5rem;
         }
 
+        /* Diagram images */
+        .diagram-container {
+            margin: 3rem 0;
+            text-align: center;
+        }
+        .diagram-container img {
+            max-width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 40px var(--accent-glow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .diagram-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 60px var(--accent-glow), 0 0 100px rgba(54, 204, 204, 0.2);
+        }
+        .diagram-caption {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .diagram-grid .diagram-container {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .diagram-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Paper cards */
         .paper-grid {
             display: grid;
@@ -728,6 +764,13 @@
                 </div>
             </div>
 
+            <!-- Visual diagram -->
+            <div class="diagram-container">
+                <h3 style="margin-bottom: 1.5rem;">🔬 The R-Spondin/Wnt Pathway</h3>
+                <img src="images/rspo-pathway.png" alt="R-Spondin Wnt Signaling Pathway Diagram" loading="lazy">
+                <p class="diagram-caption">AI-generated diagram showing RSPO binding to LGR receptors, inhibiting RNF43/ZNRF3, and activating the Wnt pathway</p>
+            </div>
+
             <!-- Discord message -->
             <div class="discord-container">
                 <div class="discord-header">
@@ -765,6 +808,13 @@
                 <div class="achievement">✅ Know what DHT does</div>
                 <div class="achievement">✅ Understand Wnt pathway</div>
                 <div class="achievement">✅ Know what RSPO is</div>
+            </div>
+
+            <!-- Key mechanism diagram -->
+            <div class="diagram-container" style="background: white; padding: 2rem; border-radius: 16px;">
+                <h3 style="color: #333; margin-bottom: 1.5rem;">📊 The Complete RSPO/Wnt Mechanism</h3>
+                <img src="images/rspo-mechanism-detailed.png" alt="R-Spondin Wnt Mechanism - Detailed Scientific Diagram" loading="lazy" style="box-shadow: none;">
+                <p class="diagram-caption" style="color: #666;">RSPO binds LGR4/5 receptors, preventing ZNRF3/RNF43 from degrading Frizzled. This allows β-catenin to accumulate and activate hair growth genes via TCF4.</p>
             </div>
         </section>
     </div>
@@ -840,6 +890,18 @@
                     <div class="pathway-node bad">Hijacked by AR+DHT</div>
                 </div>
                 <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">In balding follicles, DHT causes AR to bind β-catenin, preventing it from activating hair growth genes</p>
+            </div>
+
+            <!-- Molecular diagrams -->
+            <div class="diagram-grid">
+                <div class="diagram-container">
+                    <img src="images/rspo-molecular.png" alt="R-Spondin Molecular Interactions" loading="lazy">
+                    <p class="diagram-caption">RSPO protein family binding to membrane receptors</p>
+                </div>
+                <div class="diagram-container">
+                    <img src="images/hair-follicle-wnt.png" alt="Hair Follicle Wnt Activation" loading="lazy">
+                    <p class="diagram-caption">Hair follicle cross-section with Wnt signaling</p>
+                </div>
             </div>
 
             <div class="discord-container">
