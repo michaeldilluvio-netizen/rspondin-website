@@ -1240,14 +1240,30 @@
 
     <!-- Supabase Client (ready for when you have credentials) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- EmailJS for confirmation emails -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
         // ===========================================
-        // CONFIGURATION - Update when Supabase is ready
+        // CONFIGURATION - Update when services are ready
         // ===========================================
+
+        // Supabase Config (for lead storage)
         const SUPABASE_URL = ''; // e.g., 'https://xxxxx.supabase.co'
         const SUPABASE_ANON_KEY = ''; // e.g., 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
         const USE_SUPABASE = SUPABASE_URL && SUPABASE_ANON_KEY;
+
+        // EmailJS Config (for confirmation emails)
+        // Sign up at https://www.emailjs.com/ (free: 200 emails/month)
+        const EMAILJS_PUBLIC_KEY = ''; // e.g., 'abc123xyz'
+        const EMAILJS_SERVICE_ID = ''; // e.g., 'service_gmail'
+        const EMAILJS_TEMPLATE_ID = ''; // e.g., 'template_rspo_confirm'
+        const USE_EMAILJS = EMAILJS_PUBLIC_KEY && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID;
+
+        // Initialize EmailJS if configured
+        if (USE_EMAILJS) {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        }
 
         // Initialize Supabase client if configured
         let supabase = null;
@@ -1278,6 +1294,34 @@
             } else {
                 // Fallback to localStorage
                 return saveLeadLocally(lead);
+            }
+        }
+
+        // ===========================================
+        // EMAIL CONFIRMATION
+        // ===========================================
+        async function sendConfirmationEmail(email, eligible) {
+            if (!USE_EMAILJS) {
+                console.log('EmailJS not configured - skipping confirmation email');
+                return;
+            }
+
+            try {
+                const templateParams = {
+                    to_email: email,
+                    to_name: email.split('@')[0],
+                    eligible_status: eligible ? 'potentially eligible' : 'not eligible at this time',
+                    next_steps: eligible
+                        ? 'Our team will review your submission and contact you within 5-7 business days with next steps for the screening process.'
+                        : 'We\'ve saved your information and will notify you if eligibility criteria change or new trials become available.',
+                    trial_name: 'R-Spondin Hair Regeneration Trial',
+                };
+
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                console.log('✓ Confirmation email sent to', email);
+            } catch (error) {
+                console.error('Failed to send confirmation email:', error);
+                // Don't throw - email failure shouldn't block form submission
             }
         }
 
@@ -1361,18 +1405,20 @@
             submitBtn.disabled = true;
 
             try {
+                // Save lead to database
                 await saveLead(email, age, hairloss, eligible);
+                console.log(USE_SUPABASE ? '✓ Saved to Supabase' : '✓ Saved to localStorage');
+
+                // Send confirmation email
+                await sendConfirmationEmail(email, eligible);
 
                 if (eligible) {
-                    alert('Great news! You may be eligible for the R-Spondin trial. We will contact you at ' + email + ' with next steps.');
+                    alert('Great news! You may be eligible for the R-Spondin trial.\n\nWe\'ve sent a confirmation to ' + email + '. Check your inbox (and spam folder) for next steps.');
                     this.reset();
                     document.querySelectorAll('.norwood-stage').forEach(el => el.classList.remove('selected'));
                 } else {
-                    alert(message + '\n\nWe\'ve saved your email to notify you of future trials.');
+                    alert(message + '\n\nWe\'ve saved your email and sent a confirmation. You\'ll be notified of future trials.');
                 }
-
-                // Show storage mode in console
-                console.log(USE_SUPABASE ? '✓ Saved to Supabase' : '✓ Saved to localStorage (Supabase not configured)');
             } catch (error) {
                 alert('There was an error submitting your information. Please try again.');
                 console.error('Submission error:', error);
