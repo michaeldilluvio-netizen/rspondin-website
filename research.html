@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-Spondin Research | The Science of Hair Regeneration</title>
+    <meta name="description" content="Comprehensive research on R-Spondin and Wnt pathway activation for hair regeneration. From basics to advanced molecular biology.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-light-blue: #daf1f5;
+            --color-accent: #36CCCC;
+            --color-dark: #252525;
+            --color-white: #ffffff;
+            --color-gray: #6b7280;
+            --color-light-gray: #f3f4f6;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-purple: #8b5cf6;
+            --color-red: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Sofia Sans', sans-serif;
+            color: var(--color-dark);
+            line-height: 1.7;
+            background: var(--color-white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--color-white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .logo .teal { color: var(--color-accent); }
+        .logo .dark { color: var(--color-dark); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+        }
+        .nav-links a:hover { color: var(--color-accent); }
+        .nav-cta {
+            background: var(--color-accent);
+            color: var(--color-white) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a1a 100%);
+            color: var(--color-white);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 span { color: var(--color-accent); }
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Level Tabs */
+        .level-nav {
+            background: var(--color-light-gray);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .level-tabs {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .level-tab {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: var(--color-white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .level-tab:hover { background: var(--color-accent); color: white; }
+        .level-tab.active { background: var(--color-accent); color: white; }
+        .level-tab .icon { font-size: 1.5rem; display: block; margin-bottom: 0.25rem; }
+        .level-tab .label { font-size: 0.8rem; opacity: 0.8; }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .level-content { display: none; }
+        .level-content.active { display: block; }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-dark);
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--color-dark);
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin: 2rem 0 0.75rem;
+            color: var(--color-accent);
+        }
+        p { margin-bottom: 1rem; color: #4b5563; }
+
+        /* Cards */
+        .info-card {
+            background: var(--color-light-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .info-card.highlight {
+            background: linear-gradient(135deg, var(--color-light-blue) 0%, #e0f7fa 100%);
+            border-left: 4px solid var(--color-accent);
+        }
+        .info-card.warning {
+            background: #fef3c7;
+            border-left: 4px solid var(--color-warning);
+        }
+        .info-card h4 { margin-top: 0; }
+
+        /* Quote blocks */
+        blockquote {
+            background: var(--color-light-gray);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Source Serif 4', serif;
+            font-style: italic;
+            color: #4b5563;
+            border-radius: 0 8px 8px 0;
+        }
+        blockquote cite {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+            color: #4b5563;
+        }
+        li { margin-bottom: 0.5rem; }
+
+        /* Diagram */
+        .pathway-diagram {
+            background: var(--color-dark);
+            color: var(--color-white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .pathway-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .pathway-node {
+            background: var(--color-accent);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .pathway-node.inhibit { background: var(--color-red); }
+        .pathway-node.target { background: var(--color-success); }
+        .pathway-arrow {
+            font-size: 1.5rem;
+            color: var(--color-gray);
+        }
+
+        /* Paper citations */
+        .paper-card {
+            background: var(--color-white);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: box-shadow 0.3s;
+        }
+        .paper-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .paper-card h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+        }
+        .paper-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+        .paper-card a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .paper-card a:hover { text-decoration: underline; }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--color-light-gray);
+            border-radius: 12px;
+        }
+        .stat-item .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        .stat-item .label {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* Glossary */
+        .glossary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .glossary-term {
+            background: var(--color-white);
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .glossary-term strong {
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .glossary-term span {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-accent);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            border: 3px solid var(--color-white);
+        }
+        .timeline-item .date {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a1a 100%);
+            color: var(--color-white);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .cta-section h2 { color: var(--color-white); }
+        .cta-section p { color: rgba(255,255,255,0.7); }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 2rem;
+            text-align: center;
+        }
+        footer a { color: var(--color-accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .glossary { grid-template-columns: 1fr; }
+            .level-tabs { flex-direction: column; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><span class="teal">RSPO</span><span class="dark">NDIN</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#beginner">Beginner</a></li>
+            <li><a href="#intermediate">Intermediate</a></li>
+            <li><a href="#advanced">Advanced</a></li>
+            <li><a href="index.html#enroll" class="nav-cta">Join Trial</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>The Science of <span>R-Spondin</span></h1>
+        <p>A comprehensive guide to understanding how R-Spondin and Wnt pathway activation could revolutionize hair regeneration — from basics to cutting-edge research.</p>
+    </section>
+
+    <!-- Level Navigation -->
+    <div class="level-nav">
+        <div class="level-tabs">
+            <button class="level-tab active" onclick="showLevel('beginner')">
+                <span class="icon">🌱</span>
+                <span>Beginner</span>
+                <span class="label">The Basics</span>
+            </button>
+            <button class="level-tab" onclick="showLevel('intermediate')">
+                <span class="icon">🔬</span>
+                <span>Intermediate</span>
+                <span class="label">The Science</span>
+            </button>
+            <button class="level-tab" onclick="showLevel('advanced')">
+                <span class="icon">🧬</span>
+                <span>Advanced</span>
+                <span class="label">Deep Dive</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- BEGINNER LEVEL -->
+    <div id="beginner" class="level-content active">
+        <section class="content-section">
+            <h2>🌱 Understanding Hair Loss & R-Spondin</h2>
+
+            <div class="info-card highlight">
+                <h4>The One-Sentence Summary</h4>
+                <p style="font-size: 1.25rem; margin: 0;"><strong>R-Spondin is a protein that can "wake up" hair follicles by activating the Wnt pathway — the same biological switch that tells your body to grow hair.</strong></p>
+            </div>
+
+            <h3>Why Do We Lose Hair?</h3>
+            <p>Male pattern hair loss (androgenetic alopecia) affects over 50% of men by age 50. The culprit? A hormone called <strong>DHT (dihydrotestosterone)</strong>.</p>
+
+            <p>Here's the simple version:</p>
+            <ol>
+                <li><strong>Testosterone</strong> in your blood gets converted to <strong>DHT</strong> by an enzyme called 5α-reductase</li>
+                <li>DHT binds to receptors in your hair follicles</li>
+                <li>This triggers a cascade that <strong>shrinks follicles</strong> and shortens the hair growth cycle</li>
+                <li>Eventually, follicles become too small to produce visible hair</li>
+            </ol>
+
+            <div class="info-card">
+                <h4>Current Treatments & Their Limits</h4>
+                <p><strong>Finasteride/Dutasteride:</strong> Block the enzyme that creates DHT. Works for many, but can cause side effects and doesn't regrow hair in severely bald areas.</p>
+                <p><strong>Minoxidil:</strong> Increases blood flow to follicles. Helps maintain hair but doesn't address the root cause.</p>
+                <p><strong>Hair Transplants:</strong> Move DHT-resistant follicles from the back of your head. Expensive and limited by donor hair supply.</p>
+            </div>
+
+            <h3>Enter R-Spondin: A Different Approach</h3>
+            <p>Instead of just blocking DHT, what if we could <strong>directly activate hair growth</strong>?</p>
+
+            <p>That's where R-Spondin comes in. It's a naturally occurring protein that:</p>
+            <ul>
+                <li>Activates the <strong>Wnt signaling pathway</strong> — the master switch for hair follicle regeneration</li>
+                <li>Can potentially <strong>reawaken dormant follicles</strong> that DHT has miniaturized</li>
+                <li>Works through a completely different mechanism than current treatments</li>
+            </ul>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="value">4</div>
+                    <div class="label">R-Spondin variants (RSPO1-4)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">Wnt</div>
+                    <div class="label">Pathway activated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="value">LGR4-6</div>
+                    <div class="label">Target receptors</div>
+                </div>
+            </div>
+
+            <h3>Glossary for Beginners</h3>
+            <div class="glossary">
+                <div class="glossary-term">
+                    <strong>DHT</strong>
+                    <span>The hormone that causes hair follicles to shrink in genetically susceptible people</span>
+                </div>
+                <div class="glossary-term">
+                    <strong>Wnt Pathway</strong>
+                    <span>A cellular signaling system that controls hair growth and regeneration</span>
+                </div>
+                <div class="glossary-term">
+                    <strong>R-Spondin (RSPO)</strong>
+                    <span>A protein that amplifies Wnt signaling, potentially reactivating hair growth</span>
+                </div>
+                <div class="glossary-term">
+                    <strong>Dermal Papilla</strong>
+                    <span>The "command center" at the base of each hair follicle that controls growth</span>
+                </div>
+                <div class="glossary-term">
+                    <strong>Anagen</strong>
+                    <span>The active growth phase of the hair cycle</span>
+                </div>
+                <div class="glossary-term">
+                    <strong>β-catenin</strong>
+                    <span>A key protein in Wnt signaling that enters the nucleus to activate hair genes</span>
+                </div>
+            </div>
+
+            <div class="info-card highlight">
+                <h4>Why This Matters</h4>
+                <p>R-Spondin represents a <strong>paradigm shift</strong> from blocking hair loss to <strong>actively promoting regeneration</strong>. By directly activating the biological machinery for hair growth, it could help even those who haven't responded to traditional treatments.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- INTERMEDIATE LEVEL -->
+    <div id="intermediate" class="level-content">
+        <section class="content-section">
+            <h2>🔬 The Wnt Pathway & Hair Regeneration</h2>
+
+            <p>To understand why R-Spondin is exciting, you need to understand the Wnt signaling pathway — the master regulator of hair follicle development and cycling.</p>
+
+            <h3>The Wnt Pathway: Hair's On/Off Switch</h3>
+
+            <div class="pathway-diagram">
+                <h4 style="color: white; margin-bottom: 1rem;">Simplified Wnt Signaling in Hair Follicles</h4>
+                <div class="pathway-flow">
+                    <div class="pathway-node">Wnt Ligand</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node">Frizzled Receptor</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node target">β-catenin Released</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node target">Hair Growth Genes ON</div>
+                </div>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">When Wnt signaling is active, β-catenin accumulates and enters the nucleus to activate hair growth genes.</p>
+            </div>
+
+            <h3>How DHT Disrupts Wnt Signaling</h3>
+            <p>Research from the HairDAO community and published literature reveals the critical link between androgens and Wnt:</p>
+
+            <blockquote>
+                "AR can alter, activate, or suppress Wnt signaling by binding β-catenin, all depending on context. We demonstrated cross talk between the WNT and androgen receptor signaling pathways because excess androgen receptor could interfere with WNT signaling."
+                <cite>— PMC2682470</cite>
+            </blockquote>
+
+            <p>Key findings:</p>
+            <ul>
+                <li><strong>DHT decreases WNT5a expression</strong> in hair follicles</li>
+                <li>The androgen receptor (AR) <strong>directly binds β-catenin</strong>, sequestering it from activating hair genes</li>
+                <li>This effect is <strong>specific to balding follicles</strong> — non-balding follicles don't show the same response</li>
+                <li>Keratinocyte growth was suppressed by DHT only when co-cultured with <strong>AGA (balding) dermal papilla cells</strong></li>
+            </ul>
+
+            <div class="info-card warning">
+                <h4>The Critical Insight</h4>
+                <p>The problem isn't just DHT — it's that DHT <strong>hijacks β-catenin</strong> in genetically susceptible follicles, preventing Wnt signaling from promoting hair growth. This is why some men go bald while others with similar DHT levels don't.</p>
+            </div>
+
+            <h3>How R-Spondin Works</h3>
+
+            <p>R-Spondin proteins (RSPO1-4) are <strong>Wnt pathway amplifiers</strong>. They don't directly activate Wnt — they make existing Wnt signaling stronger and longer-lasting.</p>
+
+            <div class="pathway-diagram">
+                <h4 style="color: white; margin-bottom: 1rem;">R-Spondin Mechanism</h4>
+                <div class="pathway-flow">
+                    <div class="pathway-node">RSPO</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node">LGR4/5/6</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node inhibit">Inhibits RNF43/ZNRF3</div>
+                    <div class="pathway-arrow">→</div>
+                    <div class="pathway-node target">Wnt Receptors Stabilized</div>
+                </div>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">R-Spondin binds to LGR receptors and blocks proteins that would otherwise degrade Wnt receptors, amplifying the signal.</p>
+            </div>
+
+            <h4>The R-Spondin Family</h4>
+            <ul>
+                <li><strong>RSPO1:</strong> Most studied, strong Wnt potentiator</li>
+                <li><strong>RSPO2:</strong> Important in hair follicle development</li>
+                <li><strong>RSPO3:</strong> Role in stem cell maintenance</li>
+                <li><strong>RSPO4:</strong> Involved in nail and hair development</li>
+                <li><strong>RSPO2/4:</strong> Combination being explored for enhanced effect</li>
+            </ul>
+
+            <h3>Downstream Target: SOX9</h3>
+            <p>One of the ways R-Spondin promotes hair growth is by regulating SOX9, a transcription factor:</p>
+
+            <blockquote>
+                "One of the ways RSPO works is by downregulating SOX9. SOX9 is a master regulator of differentiation."
+                <cite>— HairDAO Discord, papasmurflives</cite>
+            </blockquote>
+
+            <p>SOX9 is being explored as an alternative target — potentially easier to target with fewer off-target effects, though possibly less effective than direct RSPO treatment.</p>
+
+            <h3>The Local DHT Hypothesis</h3>
+            <p>Important research insight: <strong>circulating DHT matters less than local DHT production</strong>.</p>
+
+            <blockquote>
+                "DHT is metabolized to 3α-androstanediol glucuronide within the hair follicle with subsequent release into the circulation, suggesting that this metabolite is a good marker of peripheral androgen production."
+                <cite>— Endocrine Reviews, 2017</cite>
+            </blockquote>
+
+            <p>This explains why:</p>
+            <ul>
+                <li>Men with 5α-reductase deficiency don't go bald despite having some circulating DHT</li>
+                <li>Topical DHT blockers can be effective without systemic effects</li>
+                <li>The critical enzyme is <strong>5αR2 in the dermal papilla</strong></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- ADVANCED LEVEL -->
+    <div id="advanced" class="level-content">
+        <section class="content-section">
+            <h2>🧬 Advanced Research & Molecular Details</h2>
+
+            <p>This section covers the cutting-edge research, detailed molecular mechanisms, and current state of R-Spondin investigation.</p>
+
+            <h3>Androgen Receptor & β-Catenin Crosstalk</h3>
+
+            <div class="paper-card">
+                <h5>Keratinocyte Growth Inhibition through Wnt Signaling Modification</h5>
+                <p>This study demonstrated direct AR-β-catenin binding in dermal papilla cells, with differential effects in AGA vs non-AGA follicles. Key finding: DHT only suppressed Wnt3a-induced keratinocyte growth in AGA DPCs.</p>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2682470/" target="_blank">Read full paper →</a>
+            </div>
+
+            <blockquote>
+                "Direct binding of AR and β-catenin was more frequent in AGA DP cells than non-AGA DP cells as determined by immunoprecipitation analysis. LEF/TCF activation in response to WNT3A was only reduced by DHT in bald DPCs, and not in non-bald DPCs."
+                <cite>— PMC2682470</cite>
+            </blockquote>
+
+            <h3>5α-Reductase Distribution in Hair Follicles</h3>
+
+            <blockquote>
+                "AR and 5αR1 mRNAs were expressed in all portions of the hair follicle. By contrast, 5αR2 mRNA was expressed only in mesenchymal portions that included the dermal papilla and connective tissue sheath, and hardly any was expressed in epithelial portions. The intensity of expression of these genes in each portion of the hair follicles did not differ between follicles from balding and nonbalding scalp."
+                <cite>— J Clin Endocrinol Metab, 2001</cite>
+            </blockquote>
+
+            <p>Critical implications:</p>
+            <ul>
+                <li>5αR2 is the primary target for local DHT production</li>
+                <li>The dermal papilla is the key site of androgen action</li>
+                <li>Enzyme distribution doesn't differ between balding/non-balding — the difference is in downstream signaling</li>
+            </ul>
+
+            <h3>Quantitative Analysis: Local vs Circulating DHT</h3>
+
+            <div class="info-card">
+                <h4>The Math Behind Local DHT Dominance</h4>
+                <p>From HairDAO research discussions:</p>
+                <ul>
+                    <li>Less than 1% of circulating DHT is unbound vs 2-3% of testosterone</li>
+                    <li>10-20x as much circulating testosterone as DHT</li>
+                    <li>Unbound testosterone fraction is ~30x higher than unbound DHT</li>
+                    <li><strong>Conclusion:</strong> Circulating DHT contributes at most ~3% of intrafollicular DHT</li>
+                </ul>
+            </div>
+
+            <blockquote>
+                "Men exposed to exceptionally high levels of DHT in response to daily application of a DHT gel preparation for 24 months — DHT was not associated with acne, MAA, or other androgen-associated skin pathology. Instead, the most important factor in the pathogenesis of MAA is a genetic predisposition for AR polymorphisms."
+                <cite>— Endocrine Reviews, 2017</cite>
+            </blockquote>
+
+            <h3>Gene Expression Changes with DHT/Testosterone</h3>
+
+            <p>Studies on beard hair follicle cells (BPHF) reveal the cascade:</p>
+
+            <blockquote>
+                "Up to 3 nM, DHT stimulation showed a trend to decrease gene expression levels of FGF7 (p = 0.52), IGF1 (p = 0.85) and WNT5a (p = 0.08). Testosterone stimulation showed a trend to decrease the gene expression levels of three hair growth factors: FGF7, IGF1, and WNT5a."
+            </blockquote>
+
+            <p>Growth factors affected:</p>
+            <ul>
+                <li><strong>FGF7:</strong> Promotes keratinocyte proliferation</li>
+                <li><strong>IGF1:</strong> Essential for anagen initiation and maintenance</li>
+                <li><strong>WNT5a:</strong> Non-canonical Wnt signaling</li>
+                <li><strong>PDGFA:</strong> Decreased with 5ARI treatment</li>
+                <li><strong>Noggin:</strong> Increased with testosterone (BMP inhibitor)</li>
+            </ul>
+
+            <h3>Current Research: HairDAO RSPO Program</h3>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="date">January 2026</div>
+                    <h4>RSPO Channel Established</h4>
+                    <p>Dedicated research channel created for R-Spondin investigation. Initial preclinical data uploaded.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">January 2026</div>
+                    <h4>SOX9 Investigation Begins</h4>
+                    <p>Exploring SOX9 as a downstream target of RSPO — potentially easier to target with fewer off-target effects.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="date">February 2026</div>
+                    <h4>February Lab Mission</h4>
+                    <p>"Finish RSPO Data Generation" — comprehensive preclinical data collection phase.</p>
+                </div>
+            </div>
+
+            <h3>Related Pathways: YAP/TAZ & Verteporfin</h3>
+
+            <p>The YAP/TAZ pathway intersects with Wnt signaling and is being explored for hair regeneration:</p>
+
+            <blockquote>
+                "YAP plays an important role with structural things when it comes to neogenesis and anagen transition. Verteporfin changes the composition of the resulting scar — the scars just look and feel more like normal skin."
+                <cite>— HairDAO Discord, dr_bloxham</cite>
+            </blockquote>
+
+            <div class="paper-card">
+                <h5>First-in-class YAP-TEAD Inhibitor Shows Promise</h5>
+                <p>Clinical trials of YAP-TEAD inhibitors show potential applications in regenerative medicine.</p>
+                <a href="https://aacrjournals.org/cancerdiscovery/article-abstract/16/1/OF1/771343/" target="_blank">Read abstract →</a>
+            </div>
+
+            <h3>Key Research Papers</h3>
+
+            <div class="paper-card">
+                <h5>The Role of Androgens in Hair (Endocrine Reviews 2017)</h5>
+                <p>Comprehensive review of androgen metabolism, 5α-reductase, and mechanisms of androgenetic alopecia.</p>
+                <a href="https://academic.oup.com/edrv/article/38/3/220/3788611" target="_blank">Read paper →</a>
+            </div>
+
+            <div class="paper-card">
+                <h5>AR CAG/GGC Repeat Polymorphisms</h5>
+                <p>Analysis showing that both hyperandrogenemia and genetically determined androgen resistance matter in hair follicles.</p>
+                <a href="https://onlinelibrary.wiley.com/doi/10.1002/pros.20128" target="_blank">Read paper →</a>
+            </div>
+
+            <div class="paper-card">
+                <h5>TBG096: IGF-1R Activation for Hair Growth</h5>
+                <p>Novel compound showing dose-dependent hair follicle transition from telogen to anagen via IGF-1R/PI3K/AKT pathway.</p>
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S000629522600095X" target="_blank">Read paper →</a>
+            </div>
+
+            <div class="paper-card">
+                <h5>TLR2 in Dermal Papilla Cell Proliferation</h5>
+                <p>Overexpression of TLR2 enhances DPC proliferation and affects CTNNB1 (β-catenin) expression.</p>
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0006291X26000872" target="_blank">Read paper →</a>
+            </div>
+
+            <h3>Open Questions</h3>
+
+            <div class="info-card">
+                <h4>What We Still Don't Know</h4>
+                <ul>
+                    <li>Optimal RSPO variant or combination (RSPO1? RSPO2/4?)</li>
+                    <li>Delivery method for topical vs systemic application</li>
+                    <li>Long-term safety profile, especially regarding cancer risk</li>
+                    <li>Whether SOX9 targeting is sufficient or RSPO is required</li>
+                    <li>Interaction with existing treatments (5ARIs, minoxidil)</li>
+                    <li>Metabolite pathway in bald scalp: reduction vs oxidation?</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Help Advance R-Spondin Research</h2>
+        <p>Be part of the clinical trial investigating R-Spondin for hair regeneration.</p>
+        <a href="index.html#enroll" class="btn btn-primary">Check Your Eligibility →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 R-Spondin Clinical Trial. A <a href="https://hairdao.xyz">HairDAO</a> Initiative.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">Research compiled from HairDAO Discord and peer-reviewed literature.</p>
+    </footer>
+
+    <script>
+        function showLevel(level) {
+            // Hide all content
+            document.querySelectorAll('.level-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Deactivate all tabs
+            document.querySelectorAll('.level-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            // Show selected content
+            document.getElementById(level).classList.add('active');
+            // Activate selected tab
+            event.target.closest('.level-tab').classList.add('active');
+            // Scroll to top of content
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+
+        // Handle hash navigation
+        if (window.location.hash) {
+            const level = window.location.hash.replace('#', '');
+            if (['beginner', 'intermediate', 'advanced'].includes(level)) {
+                document.querySelectorAll('.level-content').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.level-tab').forEach(el => el.classList.remove('active'));
+                document.getElementById(level).classList.add('active');
+                document.querySelector(`[onclick="showLevel('${level}')"]`).classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
